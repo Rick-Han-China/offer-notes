@@ -1,15 +1,15 @@
 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```c++
-class Solution {
-public:
+    class Solution {
+    public:
     // Parameters:
     //        numbers:     an array of integers
     //        length:      the length of array numbers
     //        duplication: (Output) the duplicated number in the array number
     // Return value:       true if the input is valid, and there are some duplications in the array number
     //                     otherwise false
-    bool duplicate(int numbers[], int length, int* duplication) {
+    bool duplicate(int numbers[], int length, int* duplication) 
+    {
         if(length<=1) // 数组长度不大于1，一定没有重复数字
             return false;
         //采用对号入座方法，把数组中值等于i的数字放到第i个位置上
@@ -29,4 +29,4 @@ public:
         
         return false; // 循环退出，说明不存在重复数字
     }
-};```c++
+};
