@@ -1,14 +1,7 @@
-3.数组中重复的数字
+# 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-    ```
-    class Solution {
+
     public:
-    // Parameters:
-    //        numbers:     an array of integers
-    //        length:      the length of array numbers
-    //        duplication: (Output) the duplicated number in the array number
-    // Return value:       true if the input is valid, and there are some duplications in the array number
-    //                     otherwise false
     bool duplicate(int numbers[], int length, int* duplication) 
     {
         if(length<=1) // 数组长度不大于1，一定没有重复数字
@@ -31,4 +24,61 @@ https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=
         return false; // 循环退出，说明不存在重复数字
     }
 };
-```
+# 4.二维数组中的查找
+https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+
+class Solution {
+public:
+    bool Find(int target, vector<vector<int> > array) {
+        int cl = array[0].size();
+        int li = array.size();
+        if(li == 0 or cl == 0) // 排除数组为空的情况
+            return false;
+        
+        int i = 0;
+        int j = cl - 1; // 定义数组索引
+        
+        //总体思路是从矩阵的右上角向左下角查找，每次排除一行或一列的数字    
+        while(i <= li-1 and j >= 0) // 当k不超出数组范围就进行循环判断
+        {
+            if(array[i][j]==target)
+                return true;
+            else if(array[i][j]>target)
+                j--;
+            else if(array[i][j]<target)
+                i++;
+        }
+        return false;
+    }
+};
+
+# 5.替换空格
+https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+
+class Solution {
+public:
+	void replaceSpace(char *str,int length) {
+        if(length == 0)
+            return; // 养成排除空数组的习惯
+        int p1 = 0;
+        int p2 = length-1;
+        
+        for(p1;p1<length;p1++)
+        {
+            if(str[p1] == ' ')
+                p2 = p2 + 2;
+        }
+        p1--; // 比较关键的一步，因为此时的p1=length,会导致下边的循环越界
+        for(p1;p1>=0;p1--)
+        {
+            if(str[p1] != ' ')
+                str[p2--] = str[p1];
+            else
+            {
+                str[p2--] = '0';
+                str[p2--] = '2';
+                str[p2--] = '%';
+            }
+        }
+	}
+};
