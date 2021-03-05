@@ -1,0 +1,33 @@
+3.数组中重复的数字
+https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+```
+class Solution {
+public:
+    // Parameters:
+    //        numbers:     an array of integers
+    //        length:      the length of array numbers
+    //        duplication: (Output) the duplicated number in the array number
+    // Return value:       true if the input is valid, and there are some duplications in the array number
+    //                     otherwise false
+    bool duplicate(int numbers[], int length, int* duplication) {
+        if(length<=1) // 数组长度不大于1，一定没有重复数字
+            return false;
+        //采用对号入座方法，把数组中值等于i的数字放到第i个位置上
+        for(int i=0;i<length;i++) // 遍历每个数字
+        {
+            if(i == numbers[i]); // 如果第i个数字的值和i相等，表示无需进行放置，略过。
+            
+            else if(numbers[i] == numbers[numbers[i]]) // 如果i位置上的数字和它该去的位置上的数字相等，找到重复数字
+            {
+                duplication[0] = numbers[i];
+                return true;
+            }
+            
+            else // 当上述相等条件都不满足，交换位置，把当前数字放到它对应的位置上去
+                swap(numbers[i], numbers[numbers[i]]);
+        }
+        
+        return false; // 循环退出，说明不存在重复数字
+    }
+};
+```
