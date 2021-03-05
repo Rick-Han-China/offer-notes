@@ -31,3 +31,14 @@ public:
     }
 };
 ```
+for(int i = 0; i < length;i++){
+            if(numbers[i]==i){
+                 
+            }else if(numbers[numbers[i]] == numbers[i]){
+                *duplication = numbers[i];
+                return true;
+            }else{
+                swap(numbers[numbers[i]], numbers[i]);
+            }
+        }
+        return false;
