@@ -1,6 +1,6 @@
 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```
+```C++
 class Solution {
 public:
     // Parameters:
@@ -29,16 +29,4 @@ public:
         
         return false; // 循环退出，说明不存在重复数字
     }
-};
-```
-for(int i = 0; i < length;i++){
-            if(numbers[i]==i){
-                 
-            }else if(numbers[numbers[i]] == numbers[i]){
-                *duplication = numbers[i];
-                return true;
-            }else{
-                swap(numbers[numbers[i]], numbers[i]);
-            }
-        }
-        return false;
+};```
