@@ -1,5 +1,5 @@
 # resources and record
-剑指offer的学习资源与练习记录
 
-# 参考书
-《C++ primer》
+## reference
+[1]《C++ primer》
+[2] https://github.com/Rick-Han-China/CS-Notes
