@@ -54,7 +54,7 @@ public:
 
 # 5.替换空格
 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-
+```
 class Solution {
 public:
 	void replaceSpace(char *str,int length) {
@@ -82,3 +82,29 @@ public:
         }
 	}
 };
+# 42. 和为S的两个数字
+https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+class Solution {
+public:
+    vector<int> FindNumbersWithSum(vector<int> array,int sum) {
+        int p1 = 0;
+        int p2 = array.size() - 1;
+        vector<int> li;
+        
+        while(p1<p2)
+        {
+            if((array[p1] + array[p2]) == sum)
+            {
+                li.push_back(array[p1]);
+                li.push_back(array[p2]);
+                return li;
+            }
+            else if((array[p1] + array[p2]) < sum)
+               p1++;
+            else if((array[p1] + array[p2]) > sum)
+               p2--;
+        }
+        return li; //注意这里的return，C++不像python可以直接写 return[p1,p2],得自己先创建个符合输出要求的数据结构
+     }
+ };
+ ```
