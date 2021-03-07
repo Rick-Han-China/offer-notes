@@ -54,7 +54,6 @@ public:
 
 # 5.替换空格
 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```
 class Solution {
 public:
 	void replaceSpace(char *str,int length) {
@@ -107,4 +106,43 @@ public:
         return li; //注意这里的return，C++不像python可以直接写 return[p1,p2],得自己先创建个符合输出要求的数据结构
      }
  };
- ```
+# 6.从尾到头打印链表
+https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+第一种：
+/**
+*  struct ListNode {
+*        int val;
+*        struct ListNode *next;
+*        ListNode(int x) :
+*              val(x), next(NULL) {
+*        }
+*  };
+*/
+class Solution {
+public:
+    vector<int> printListFromTailToHead(ListNode* head) {
+        vector<int> li;
+        ListNode * p = head;
+        
+        while(p)
+        {
+            li.push_back(p->val);
+            p = p->next;
+        }
+        return vector<int>(li.rbegin(), li.rend()); //这里的输出比较有特点
+    }
+};
+第二种：和前一种方法功能一样，只是使用的函数不同
+ vector<int> str;
+        
+        while(head)
+        {
+            str.push_back(head->val);//这里为什么把->换成 . 不对
+            head = head->next;
+        }
+        std:reverse(str.begin(), str.end());
+        
+        return str;
+第三种：递归法-未完善，觉得小题大做
+第四种：改变指针指向-待完善
+第五种：使用stack，自然形成逆序
