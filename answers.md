@@ -1,6 +1,6 @@
 # 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-
+```
     public:
     bool duplicate(int numbers[], int length, int* duplication) 
     {
@@ -24,9 +24,10 @@ https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=
         return false; // 循环退出，说明不存在重复数字
     }
 };
+```
 # 4.二维数组中的查找
 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-
+```
 class Solution {
 public:
     bool Find(int target, vector<vector<int> > array) {
@@ -51,9 +52,10 @@ public:
         return false;
     }
 };
-
+```
 # 5.替换空格
 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+```
 class Solution {
 public:
 	void replaceSpace(char *str,int length) {
@@ -81,8 +83,10 @@ public:
         }
 	}
 };
+```
 # 42. 和为S的两个数字
 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+```
 class Solution {
 public:
     vector<int> FindNumbersWithSum(vector<int> array,int sum) {
@@ -106,8 +110,10 @@ public:
         return li; //注意这里的return，C++不像python可以直接写 return[p1,p2],得自己先创建个符合输出要求的数据结构
      }
  };
+ ```
 # 6.从尾到头打印链表
 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+```
 第一种：
 /**
 *  struct ListNode {
@@ -132,7 +138,9 @@ public:
         return vector<int>(li.rbegin(), li.rend()); //这里的输出比较有特点
     }
 };
+```
 第二种：和前一种方法功能一样，只是使用的函数不同
+ ```
  vector<int> str;
         
         while(head)
@@ -143,6 +151,7 @@ public:
         std:reverse(str.begin(), str.end());
         
         return str;
+	```
 第三种：递归法-未完善，觉得小题大做
 第四种：改变指针指向-待完善
 第五种：使用stack，自然形成逆序
