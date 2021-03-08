@@ -1,4 +1,4 @@
-# I use C++.
+# I use C++
 # resources and record
 ## reference
 [1]《C++ primer》
