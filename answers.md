@@ -1,5 +1,6 @@
 # 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+Y
 ```
     public:
     bool duplicate(int numbers[], int length, int* duplication) 
@@ -27,6 +28,7 @@ https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=
 ```
 # 4.二维数组中的查找
 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+Y
 ```
 class Solution {
 public:
@@ -56,6 +58,7 @@ public:
 # 5.替换空格
 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 ```
+Y
 class Solution {
 public:
 	void replaceSpace(char *str,int length) {
@@ -87,6 +90,7 @@ public:
 # 42. 和为S的两个数字
 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 ```
+Y
 class Solution {
 public:
     vector<int> FindNumbersWithSum(vector<int> array,int sum) {
@@ -113,6 +117,7 @@ public:
  ```
 # 6.从尾到头打印链表
 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
 ```
 第一种：
 /**
@@ -151,7 +156,64 @@ public:
         std:reverse(str.begin(), str.end());
         
         return str;
-	```
 第三种：递归法-未完善，觉得小题大做
 第四种：改变指针指向-待完善
 第五种：使用stack，自然形成逆序
+```
+# 58.1翻转单词顺序列
+https://www.nowcoder.com/practice/3194a4f4cf814f63919d0790578d51f3?tpId=13&tqId=11197&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
+```
+//思路：先翻转每个单词，再翻转字符串
+//注意：这题出得不好，容易让人误解，做题时很容易认为.号能作为flag，但是根据答案，会有把正常语序反转成逆语序的，正常人谁会把对的改成错的啊
+class Solution {
+public:
+    string ReverseSentence(string str) {
+        string store;
+        string temp;
+        int p2 = str.size() - 1;
+        
+        for(p2;p2>=0;p2--)
+        {
+            if(str[p2] != ' ')
+            {
+                temp = str[p2] + temp;
+            }
+            else if(str[p2] == ' ')
+            {
+                store = store + temp + ' ';
+                temp = ""; //这里用单引号就错了，因为temp是string类型
+            }
+        }
+        store = store + temp;//这行很重要，因为此时temp中可能还存放着一个单词
+        return store;
+    }
+};
+```
+# 58.2 左旋转字符串
+https://www.nowcoder.com/practice/12d959b108cb42b1ab72cef4d36af5ec?tpId=13&tqId=11196&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+Y
+```
+class Solution {
+public:
+    string LeftRotateString(string str, int n) {
+        int p1 = 0;
+        int p2 = str.size() - 1;
+        string s1;
+        string s2;
+        while(p1<n)
+        {
+            s2.push_back(str[p1]);
+            p1++;
+        }
+        while(p2>=n)
+        {
+            s1.push_back(str[n]);
+            n++;
+        }
+        return s1+s2;
+//         if (n > str.size()) return str;
+//         return str.substr(n) + str.substr(0, n); 这两行是比较简介的写法
+    }
+};
+```
