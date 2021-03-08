@@ -217,4 +217,32 @@ public:
     }
 };
 ```
-# 
+# JZ15. 反转链表
+https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=13&tqId=11168&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+H
+```
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+    ListNode* ReverseList(ListNode* pHead) {
+        ListNode * pre = nullptr;
+        ListNode * next;
+        while(pHead)
+        {
+            next = pHead->next;
+            pHead->next = pre; // 到这里节点已经指向前一个了
+            pre = pHead;
+            pHead = next; // 到这里把节点更新，循环进行
+        }
+        return pre; // 这里return谁得考虑清楚，其实比较简单，只有当前节点，也就是此时的pHead为空时，循环
+                    // 才能退出，所以返回pre才对
+    }
+};
+```
