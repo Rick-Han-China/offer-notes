@@ -284,3 +284,41 @@ https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&tqId=
 ```
 class
 ```
+# 链表中倒数第K个节点
+https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&tqId=11167&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+编译未通过，正在排查
+```
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+    ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
+        ListNode * pre = nullptr;
+        ListNode * next;
+        ListNode * store;
+        
+        unsigned int i = 1;
+        
+        while(pListHead)
+        {
+            next = pListHead -> next;
+            pListHead -> next = pre;
+            pre = pListHead;
+            pListHead = next;
+        }
+        
+        while(i!=k)
+        {
+            pre = pre -> next;
+            i++;
+        }
+        return pre;
+    }
+};
+```
