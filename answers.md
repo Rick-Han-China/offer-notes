@@ -157,7 +157,40 @@ public:
         
         return str;
 第三种：递归法-未完善，觉得小题大做
-第四种：改变指针指向-待完善
+第四种：改变指针指向
+```
+/**
+*  struct ListNode {
+*        int val;
+*        struct ListNode *next;
+*        ListNode(int x) :
+*              val(x), next(NULL) {
+*        }
+*  };
+*/
+class Solution {
+public:
+    vector<int> printListFromTailToHead(ListNode* head) {
+        vector<int> al;
+        ListNode* pre = nullptr;
+        ListNode* next;
+        while(head)
+        {
+            next = head->next; // 提前存储下一个节点
+            head->next = pre; // 指针指向前一个
+            pre = head; // 用过的节点变成前一个节点
+            head = next; // 让下一个节点变成当前节点
+        }
+        
+        while(pre)
+        {
+            al.push_back(pre->val);
+            pre = pre->next;
+        }
+        return al;
+    }
+};
+```
 第五种：使用stack，自然形成逆序
 ```
 # 58.1翻转单词顺序列
