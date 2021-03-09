@@ -117,7 +117,7 @@ public:
  ```
 # 6.从尾到头打印链表
 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-N
+Y
 ```
 第一种：
 /**
@@ -145,7 +145,7 @@ public:
 };
 ```
 第二种：和前一种方法功能一样，只是使用的函数不同
- ```
+```
  vector<int> str;
         
         while(head)
@@ -158,8 +158,7 @@ public:
         return str;
 第三种：递归法-未完善，觉得小题大做
 第四种：改变指针指向
-```
-/**
+/*
 *  struct ListNode {
 *        int val;
 *        struct ListNode *next;
@@ -190,7 +189,7 @@ public:
         return al;
     }
 };
-```
+
 第五种：使用stack，自然形成逆序
 ```
 # 58.1翻转单词顺序列
