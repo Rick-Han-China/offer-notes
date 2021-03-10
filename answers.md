@@ -321,7 +321,23 @@ public:
 递归方法
 N
 ```C++
-
+class Solution {
+public:
+    ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
+     if (!pHead1) return pHead2;
+     if (!pHead2) return pHead1;
+     if (pHead1->val <= pHead2->val)
+     {
+           pHead1->next = Merge(pHead1->next, pHead2);
+           return pHead1;
+     }
+     else
+     {
+         pHead2->next = Merge(pHead1, pHead2->next);
+         return pHead2;
+     }
+    }
+};
 ```
 # 链表中倒数第K个节点
 https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&tqId=11167&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
