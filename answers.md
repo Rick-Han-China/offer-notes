@@ -1,7 +1,7 @@
 # 3.数组中重复的数字
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 Y
-```
+```C++
     public:
     bool duplicate(int numbers[], int length, int* duplication) 
     {
