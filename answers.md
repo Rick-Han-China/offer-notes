@@ -29,7 +29,7 @@ Y
 # 4.二维数组中的查找
 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 Y
-```
+```C++
 class Solution {
 public:
     bool Find(int target, vector<vector<int> > array) {
@@ -57,8 +57,8 @@ public:
 ```
 # 5.替换空格
 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```
 Y
+```C++
 class Solution {
 public:
 	void replaceSpace(char *str,int length) {
@@ -89,8 +89,8 @@ public:
 ```
 # 42. 和为S的两个数字
 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```
 Y
+```C++
 class Solution {
 public:
     vector<int> FindNumbersWithSum(vector<int> array,int sum) {
@@ -118,7 +118,7 @@ public:
 # 6.从尾到头打印链表
 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 Y
-```
+```C++
 第一种：
 /**
 *  struct ListNode {
@@ -196,7 +196,7 @@ public:
 # 58.1翻转单词顺序列
 https://www.nowcoder.com/practice/3194a4f4cf814f63919d0790578d51f3?tpId=13&tqId=11197&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 N
-```
+```C++
 //思路：先翻转每个单词，再翻转字符串
 //注意：这题出得不好，容易让人误解，做题时很容易认为.号能作为flag，但是根据答案，会有把正常语序反转成逆语序的，正常人谁会把对的改成错的啊
 class Solution {
@@ -226,7 +226,7 @@ public:
 # 58.2 左旋转字符串
 https://www.nowcoder.com/practice/12d959b108cb42b1ab72cef4d36af5ec?tpId=13&tqId=11196&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 Y
-```
+```C++
 class Solution {
 public:
     string LeftRotateString(string str, int n) {
@@ -253,7 +253,7 @@ public:
 # JZ15. 反转链表
 https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=13&tqId=11168&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 H
-```
+```C++
 /*
 struct ListNode {
 	int val;
@@ -281,13 +281,13 @@ public:
 ```
 # 合并有序链表
 https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&tqId=11169&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-```
+```C++
 class
 ```
 # 链表中倒数第K个节点
 https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&tqId=11167&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 编译未通过，正在排查
-```
+```C++
 /*
 struct ListNode {
 	int val;
