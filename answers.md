@@ -281,11 +281,51 @@ public:
 ```
 # 合并有序链表
 https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&tqId=11169&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+迭代方法
+H
 ```C++
-class
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+    ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
+        ListNode * dummy =new ListNode(0); //设置哨兵，注意new
+        ListNode * cur = dummy;
+        
+        while(pHead1 and pHead2)
+        {
+            if(pHead1->val <= pHead2->val)
+            {
+                cur->next = pHead1;
+                pHead1 = pHead1->next;
+            }
+            else if(pHead1->val > pHead2->val)
+            {
+                cur->next = pHead2;
+                pHead2 = pHead2->next;
+            }
+            cur = cur->next;
+        }
+        if(pHead1) cur->next = pHead1;
+        else cur->next = pHead2; //这两步判断很重要，要把剩下的链上来
+        return dummy->next;
+    }
+};
+```
+递归方法
+N
+```C++
+
 ```
 # 链表中倒数第K个节点
 https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&tqId=11167&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
 编译未通过，正在排查
 ```C++
 /*
