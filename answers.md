@@ -378,3 +378,72 @@ public:
     }
 };
 ```
+# 18.2 删除链表中重复的节点
+关键在于，通过while处理那些无法确定连续相等长度的节点
+```C++
+/*
+struct ListNode {
+    int val;
+    struct ListNode *next;
+    ListNode(int x) :
+        val(x), next(NULL) {
+    }
+};
+*/
+class Solution {
+public:
+    ListNode* deleteDuplication(ListNode* phead) {
+        ListNode * dummy = new ListNode(-1);
+        ListNode * pre = dummy;
+        ListNode * cur = phead;
+        pre->next = cur;
+        while(cur)
+        {
+            if(cur->next and cur->val == cur->next->val)
+            {
+                cur = cur->next;
+                while(cur->next and cur->val == cur->next->val)
+                {
+                    cur = cur->next;
+                }
+                cur = cur->next;
+                pre->next = cur;
+            }
+            else
+            {
+                pre = cur;
+                cur = cur->next;
+            }
+        }
+        return dummy->next;
+    }
+};
+```
+# 52. 两个链表的第一个公共节点
+巧妙的地方在于：空节点也是某种意义上的公共节点
+这道题要注意判断条件：应判断自身是否为空，而不是下一个节点是否为空，否则就无法进入都为空的状态，也就无法跳出循环了
+```C++
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+    ListNode* FindFirstCommonNode( ListNode* phead1, ListNode* phead2) {
+        ListNode * p1 = phead1;
+        ListNode * p2 = phead2;
+        while(phead1 != phead2)
+        {
+            if(phead1) phead1 = phead1->next;
+            else if(!phead1) phead1 = p2;
+            if(phead2) phead2 = phead2->next;
+            else if(!phead2) phead2 = p1;
+        }
+        return phead1;
+    }
+};
+```
