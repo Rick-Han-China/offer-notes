@@ -447,3 +447,41 @@ public:
     }
 };
 ```
+# 23.链表中环的入口节点
+https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&tqId=11208&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
+第一种：快慢指针
+```C++
+```
+第二种：哈希
+# 9.用两个栈实现队列
+https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&tqId=11158&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+这题思路简单，1.注意分清top和pop，2.注意栈2是否为空会对应两种情况，想不明白的时候画个图
+```C++
+class Solution
+{
+public:
+    int store;
+    void push(int node) {
+        stack1.push(node);
+    }
+
+    int pop() {
+        if(stack2.empty())
+        {
+            while(!stack1.empty())
+            {
+                stack2.push(stack1.top());
+                stack1.pop();
+            }
+        }
+        store = stack2.top();
+        stack2.pop();
+        return store;
+    }
+
+private:
+    stack<int> stack1;
+    stack<int> stack2;
+};
+```
