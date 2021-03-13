@@ -485,3 +485,105 @@ private:
     stack<int> stack2;
 };
 ```
+# 31. 栈的压入、弹出序列
+https://www.nowcoder.com/practice/d77d11405cc7470d82554cb392585106?tpId=13&tqId=11174&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+H
+这题要注意的是压栈和出栈会交替进行，第一次做往往会忽略，并且要注意两次循环的终止条件
+```C++
+class Solution {
+public:
+    bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+        stack<int> s;
+        int i =0, j = 0;
+        
+        while(i < pushV.size())
+        {
+            if(pushV[i] != popV[j])
+            {
+                s.push(pushV[i]);
+                i++;
+            }
+            else
+            {
+                i++;
+                j++;
+                
+                while(!s.empty() and s.top() == popV[j])
+                {
+                    s.pop();
+                    j++;
+                }
+            }
+        }
+        return s.empty();
+    }
+};
+```
+# 30.包含min函数的栈
+https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49?tpId=13&tqId=11173&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+本题巧妙的点在于：1.时间换空间 2.pop的时候一起pop,省去判断的步骤，当保持两个栈中元素数目一致，辅助栈顶一定就是实际栈中的最小值
+```C++
+class Solution {
+public:
+    stack<int> s;
+    stack<int> help;
+    void push(int value)
+    {
+        s.push(value);
+        if(help.empty())
+            help.push(value);
+        else if(!help.empty())
+        {
+            if(value >= help.top())
+                help.push(help.top());
+            else
+            {
+                help.push(value);
+            }
+        }
+    }
+    void pop()
+    {
+        s.pop();
+        help.pop();
+    }
+    int top() {
+        return s.top();
+    }
+    int min()
+    {
+        return help.top();
+    }
+};
+```
+# 11.旋转数组的最小数字
+https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba?tpId=13&tqId=11159&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
+```C++
+class Solution {
+public:
+    int minNumberInRotateArray(vector<int> array) {
+        if(array.size() == 0) return 0;
+        
+        int l = 0, r = array.size() - 1;
+        int mid;
+        while(l<r)
+        {
+            if(array[l] < array[r]) // 这一行为什么呢？
+                return array[l];
+
+            mid = l + (r-l)/2;
+            
+            if(array[mid] > array[r]) // 为什么这一行必须写if？
+            {
+                l = mid + 1;
+            }
+            else if(array[mid] <= array[r])
+            {
+                mid = r;
+            }
+        }
+        return array[l];
+    }
+};
+```
