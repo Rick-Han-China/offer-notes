@@ -566,13 +566,11 @@ public:
         if(array.size() == 0) return 0;
         
         int l = 0, r = array.size() - 1;
-        int mid;
         while(l<r)
         {
             if(array[l] < array[r]) // 这一行为什么呢？
                 return array[l];
-
-            mid = l + (r-l)/2;
+            int mid = l + (r-l)/2; // 如果不在循环内定义，这一行每次都会占用新的内存，为什么？
             
             if(array[mid] > array[r]) // 为什么这一行必须写if？
             {
@@ -580,10 +578,74 @@ public:
             }
             else if(array[mid] <= array[r])
             {
-                mid = r;
+                r = mid;
             }
         }
         return array[l];
     }
 };
 ```
+# 53.统计升序数组中出现的次数
+https://www.nowcoder.com/practice/70610bf967994b22bb1c26f9ae901fa2?tpId=13&tqId=11190&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+H
+加上r = data.size();// - 1;的注释，就会在最后一个元素为目标值时无法跳出循环
+加上if(data[l]> k or data[r] < k) return 0;行，就会越界；
+改成	/*
+	if(data.empty()) return 0;
+        if(data[l]> k) return 0;
+        if(data[r-1] < k) return 0;
+	*/
+就可以解决，还能减少内存占用
+```C++
+class Solution {
+public:
+    int GetNumberOfK(vector<int> data ,int k)
+    {
+        int l = 0;
+        int r = data.size();// - 1;
+        //if(data[l]> k or data[r] < k) return 0;
+	/*
+	if(data.empty()) return 0;
+        if(data[l]> k) return 0;
+        if(data[r-1] < k) return 0;
+	*/
+        int flag = 0;
+        while(l < r)
+        {
+            int mid = l + (r-l)/2;
+            if(data[mid] <= k) l = mid + 1;
+            else r = mid;
+        }
+        flag = l;
+        l = 0;
+        r = data.size();// - 1;
+        while(l < r)
+        {
+            int mid = l + (r-l)/2;
+            if(data[mid] >= k) r = mid;
+            else l = mid + 1;
+        }
+        return flag - l;
+    }
+};
+```
+# 16.数值的整数次方
+https://www.nowcoder.com/practice/1a834e5e3e1a4b7ba251417554e07c00?tpId=13&tqId=11165&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+这题细节很多，要注意
+H
+```C++
+class Solution {
+public:
+    double Power(double x, int n){
+        if(n==0) return 1;
+        double res = x;
+        for(int i=abs(n); i>1;i--)
+        {
+            x *= res;
+        }
+        if(n<0) return 1/x;
+        return x;
+    }
+};
+```
+# 
