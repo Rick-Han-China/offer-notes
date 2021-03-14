@@ -648,4 +648,39 @@ public:
     }
 };
 ```
-# 
+# 21. 调整数组顺序使奇数位于偶数前面
+https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&tqId=11166&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+H
+使用辅助数组
+注意copy函数的用法
+```C++
+class Solution {
+public:
+    void reOrderArray(vector<int> &array) {
+        vector<int> arr;
+        
+        for(auto i : array)
+        {
+            if(i % 2 != 0) arr.push_back(i);
+        }
+        for(auto i : array)
+        {
+            if(i % 2 == 0) arr.push_back(i);
+        }
+        array = arr;
+        //copy(arr.begin(), arr.end(), array.begin());
+    }
+};
+```
+冒泡方法，我弃用了
+# 45.把数组排成最小的数
+https://www.nowcoder.com/practice/8fecd3f8ba334add803bf2a06af1b993?tpId=13&tqId=11185&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
+```C++
+```
+# 51. 数组中的逆序对
+https://www.nowcoder.com/practice/96bd6684e04a44eb80e6a68efc0ec6c5?tpId=13&tqId=11188&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
+N
+```C++
+
+```
