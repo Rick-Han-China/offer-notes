@@ -521,8 +521,8 @@ public:
 ```
 # 30.包含min函数的栈
 https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49?tpId=13&tqId=11173&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
-本题巧妙的点在于：1.时间换空间 2.pop的时候一起pop,省去判断的步骤，当保持两个栈中元素数目一致，辅助栈顶一定就是实际栈中的最小值
 ```C++
+本题巧妙的点在于：1.时间换空间 2.pop的时候一起pop,省去判断的步骤，当保持两个栈中元素数目一致，辅助栈顶一定就是实际栈中的最小值
 class Solution {
 public:
     stack<int> s;
@@ -588,15 +588,17 @@ public:
 # 53.统计升序数组中出现的次数
 https://www.nowcoder.com/practice/70610bf967994b22bb1c26f9ae901fa2?tpId=13&tqId=11190&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 H
+```C++
+/*
 加上r = data.size();// - 1;的注释，就会在最后一个元素为目标值时无法跳出循环
 加上if(data[l]> k or data[r] < k) return 0;行，就会越界；
-改成	/*
+改成
 	if(data.empty()) return 0;
         if(data[l]> k) return 0;
         if(data[r-1] < k) return 0;
-	*/
+	
 就可以解决，还能减少内存占用
-```C++
+*/
 class Solution {
 public:
     int GetNumberOfK(vector<int> data ,int k)
@@ -652,7 +654,7 @@ public:
 https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&tqId=11166&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=cyc_github&tab=answerKey
 H
 使用辅助数组
-注意copy函数的用法
+注意copy函数的用法(我直接赋值了)
 ```C++
 class Solution {
 public:
