@@ -1,5 +1,4 @@
 # I use C++
-# resources and record
+# resources and record about now coder and leetcode
 ## reference
 [1]《C++ primer》
-[2] https://github.com/Rick-Han-China/CS-Notes
