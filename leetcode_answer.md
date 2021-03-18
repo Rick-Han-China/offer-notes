@@ -44,3 +44,25 @@ public:
     }
 };
 ```
+# 345. Reverse Vowels of a String
+https://leetcode.com/problems/reverse-vowels-of-a-string/
+N
+两个点需要注意：
+1.使用set容器，创建一个C风格字符串 2.交换后p1和p2需要移位，否则无法跳出循环3.注意count函数的使用方法，功能类似find，返回所查找元素出现的次数                                     
+```C++
+class Solution {
+public:
+    string reverseVowels(string s) {
+        int p1 = 0;
+        int p2 = s.size() - 1;
+        set<char> dic = {'a','e','i','o','u','A','E','I','O','U'};
+        while(p1 < p2)
+        {
+            while(p1<p2 and !dic.count(s[p1])) p1++;
+            while(p1<p2 and !dic.count(s[p2])) p2--;
+            if(p1<p2) swap(s[p1++], s[p2--]);
+        }
+        return s;
+    }
+};
+```
