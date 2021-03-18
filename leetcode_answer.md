@@ -27,18 +27,23 @@ public:
 # 633. Sum of Square Numbers
 https://leetcode.com/problems/sum-of-square-numbers/
 N
-下边写错了，不知道为啥，输入为3就不对了
+1.注意p1 p2初始化时要用long，否则会溢出，因为while中对p1 p2进行了乘方
+2.乘方操作注意，要么pow,要么自己*自己，别用^
 ```C++
 class Solution {
 public:
     bool judgeSquareSum(int c) {
-        int p1 = 0;
-        int p2 = (int) sqrt(c);
+        long p1 = 0;
+        long p2 = sqrt(c);
+        
         while(p1<=p2)
         {
-            if(p1 ^ 2 + p2 ^ 2 == c) return true;
-            else if(p1 ^ 2 + p2 ^ 2 < c) p1++;
-            else p2--;
+            if(p1*p1 + p2*p2 < c)
+                p1++;
+            else if(p1*p1 + p2*p2 > c)
+                p2--;
+            else
+                return true;
         }
         return false;
     }
