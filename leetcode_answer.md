@@ -71,3 +71,17 @@ public:
     }
 };
 ```
+# 4. 回文字符串
+https://leetcode.com/problems/valid-palindrome-ii/description/
+N
+需要单独写一个验证函数
+```C++
+```
+# 5. 归并两个有序数组
+https://leetcode.com/problems/merge-sorted-array/description/
+```C++
+```
+# 6. 判断链表是否存在环
+https://leetcode.com/problems/linked-list-cycle/submissions/
+```C++
+```
