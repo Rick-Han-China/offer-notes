@@ -1,4 +1,5 @@
-# 167. Two Sum II - Input array is sorted
+# 双指针
+## 167. Two Sum II - Input array is sorted
 https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 返回的是vector<int>, 可以提前定义一个vector<int>用于返回，也可以返回时写一个vector<int>
 N
@@ -24,7 +25,8 @@ public:
     }
 };
 ```
-# 633. Sum of Square Numbers
+
+## 633. Sum of Square Numbers
 https://leetcode.com/problems/sum-of-square-numbers/
 N
 1.注意p1 p2初始化时要用long，否则会溢出，因为while中对p1 p2进行了乘方
@@ -49,7 +51,7 @@ public:
     }
 };
 ```
-# 345. Reverse Vowels of a String
+## 345. Reverse Vowels of a String
 https://leetcode.com/problems/reverse-vowels-of-a-string/
 N
 两个点需要注意：
@@ -71,17 +73,164 @@ public:
     }
 };
 ```
-# 4. 回文字符串
+## 4. 回文字符串
 https://leetcode.com/problems/valid-palindrome-ii/description/
 N
 需要单独写一个验证函数
 ```C++
+
 ```
-# 5. 归并两个有序数组
+## 5. 归并两个有序数组
 https://leetcode.com/problems/merge-sorted-array/description/
 ```C++
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int p1 = 0;
+        int p2 = 0;
+        vector<int> s;
+        
+        while(p1<m or p2<n)
+        {
+            if(p1 == m) s.push_back(nums2[p2++]);
+            
+            else if(p2 == n) s.push_back(nums1[p1++]);
+
+            else if(nums1[p1] <= nums2[p2]) s.push_back(nums1[p1++]);
+
+            else if(nums1[p1] > nums2[p2]) s.push_back(nums2[p2++]);
+        }
+        nums1 = s;
+    }
+};
 ```
-# 6. 判断链表是否存在环
+## 6. 判断链表是否存在环
 https://leetcode.com/problems/linked-list-cycle/submissions/
+N
+1.开头记得排除头节点为空或只有一个节点的情况
+2.注意循环的终止条件
+3.起点不能相同，否则与循环终止条件冲突
+4.走得快的指针，如果没有环，会先达到nullptr,而如果它本身或者它的下一个为nullptr，就一定没有环，所以return false
 ```C++
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(!head or !head->next) return false;
+        ListNode * slow = head;
+        ListNode * fast = head->next;
+        
+        while(slow != fast)
+        {
+            if(!fast or !fast->next)
+                return false;
+            else
+            {
+                slow = slow->next;
+                fast = fast->next->next;
+            }
+        }
+        return true;
+    }
+};
+```
+## 7. 最长子序列
+https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/
+```C++
+
+```
+# 链表
+## 1. 找出两个链表的交点
+https://leetcode.com/problems/intersection-of-two-linked-lists/description/
+H
+1.循环的终止条件
+2.当p1或p2为空，怎么把另一条路链上来很重要，已经为空时写成p1->next = headB就错了，都空了，就更没有下一个了;
+```C++
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // if(!headA) return headA;
+        // if(!headB) return headB;
+        ListNode * p1 = headA;
+        ListNode * p2 = headB;
+        
+        while(p1 != p2)
+        {
+            if(!p1) p1 = headB;
+            else if(p1) p1 = p1->next;
+            
+            if(!p2) p2 = headA;
+            else if(p2) p2 = p2->next;
+            
+       }
+        return p1;
+    }
+};
+```
+## 2. 链表反转
+https://leetcode.com/problems/reverse-linked-list/description/
+N
+1.反转链表就是pre current next三个节点的更新
+2.注意循环退出的条件
+3.return谁要想好
+```C++
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* pre = nullptr;
+        ListNode* nex;
+        
+        while(head)
+        {
+            nex = head->next;
+            head->next = pre;
+            pre = head;
+            head = nex;
+        }
+        return pre;
+    }
+};
+```
+## 3. 归并两个有序的链表
+https://leetcode.com/problems/merge-two-sorted-lists/submissions/
+H
+1.注意哨兵节点
+2.注意返回谁
+```C++
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode(-1);
+        ListNode* pre;
+        pre = dummy;
+        
+        while(l1 or l2)
+        {
+            if(!l1 and l2)
+            {
+                pre->next = l2;
+                pre = l2;
+                l2 = l2->next;
+            }
+            else if(l1 and !l2)
+            {
+                pre->next = l1;
+                pre = l1;
+                l1 = l1->next;
+            }
+            else if(l1->val <= l2->val) 
+            {
+                pre->next = l1;
+                pre = l1;
+                l1 = l1->next;
+            }
+            else if(l1->val > l2->val) 
+            {
+                pre->next = l2;
+                pre = l2;
+                l2 = l2->next;
+            }
+        }
+        return dummy->next;
+    }
+};
 ```
