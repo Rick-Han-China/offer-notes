@@ -234,3 +234,121 @@ public:
     }
 };
 ```
+## 4. 从有序链表中删除重复节点
+https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/
+H
+1.开头注意排除特殊情况
+2.哨兵节点别写反 这样就错了：dummy = pre;
+3.不加这一句 pre->next = nullptr; 就会导致：
+Input:[1,1,2,3,3] 
+Output:[1,2,3,3] 
+Expected:[1,2,3] 
+```C++
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(!head or !head->next) return head;
+        
+        ListNode* dummy = new ListNode(-200);
+        ListNode* pre;
+        pre = dummy;
+        //dummy->next = head;
+        while(head)
+        {
+            if(pre->val != head->val)
+            {
+                pre->next = head;
+                pre = head;
+                head = head->next;
+            }
+            else if(pre->val == head->val)
+            {
+                head = head->next;
+            }
+        }
+        pre->next = nullptr;
+        return dummy->next;
+```
+## 5. 删除链表的倒数第 n 个节点
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+N
+```C++
+```
+## 6. 交换链表中的相邻结点
+https://leetcode.com/problems/swap-nodes-in-pairs/description/
+N
+```C++
+```
+## 7. 链表求和
+https://leetcode.com/problems/add-two-numbers-ii/description/
+```C++
+```
+## 8. 回文链表
+https://leetcode.com/problems/palindrome-linked-list/submissions/
+Y
+速度慢 占用多 待完善
+```C++
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        vector<double> s;
+        vector<double> c;
+        ListNode* pre = nullptr;
+        ListNode* nex;
+        while(head)
+        {
+            s.push_back(head->val);
+            
+            nex = head->next;
+            head->next = pre;
+            pre = head;
+            head = nex;
+        }
+        while(pre)
+        {
+            c.push_back(pre->val);
+            pre = pre->next;
+        }
+        if(s == c) return true;
+        else return false;
+    }
+};
+```
+## 9. 分隔链表
+https://leetcode.com/problems/split-linked-list-in-parts/description/
+N
+```C++
+```
+## 10. 链表元素按奇偶聚集
+https://leetcode.com/problems/odd-even-linked-list/description/
+N 报错未解决
+```C++
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        ListNode* d1 = new ListNode(1);
+        ListNode* d2 = new ListNode(1);
+        ListNode* pre1;
+        ListNode* nex1;
+        ListNode* pre2;
+        ListNode* nex2;
+        pre1 = d1;
+        pre2 = d2;
+        
+        while(head)
+        {
+            if(head->val % 2 != 0) 
+            {
+                pre1->next = head;
+                pre1 = head;
+            }
+            else 
+            {
+                pre2->next = head;
+                pre2 = head;
+            }
+            head = head->next;
+        }
+        pre1->next = d2->next;
+        return d1->next;
+    }
+};
+```
