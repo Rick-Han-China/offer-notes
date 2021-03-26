@@ -358,7 +358,7 @@ public:
 ## 3.
 ## 4. 用栈实现括号匹配
 https://leetcode.com/problems/valid-parentheses/description/
-N
+N 用字典-涉及到map的用法
 ```C++
 class Solution {
 public:
@@ -366,7 +366,6 @@ public:
         if(s.size() == 0 or s.size() %2 != 0)
             return false;
         stack<char> store;
-        //可以使用字典
         for(char i : s)
         {
             if(i=='(' or i=='{' or i=='[')
