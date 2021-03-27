@@ -358,22 +358,43 @@ public:
 ## 3.
 ## 4. 用栈实现括号匹配
 https://leetcode.com/problems/valid-parentheses/description/
-N 用字典-涉及到map的用法
+N
+1.python字典思想-涉及到map的用法
+2.map与unordered_map https://blog.csdn.net/jingyi130705008/article/details/82633778
+3.unordered_map https://blog.csdn.net/Cypress1010/article/details/53669409
+4.注意栈为空的情况
+5.栈为空时，top()函数返回什么？
 ```C++
 class Solution {
 public:
     bool isValid(string s) {
-        if(s.size() == 0 or s.size() %2 != 0)
+        if(s.size() == 0 or s.size() %2 != 0) //若为奇数，必false
             return false;
+        
         stack<char> store;
-        for(char i : s)
+        unordered_map <char, char> dic ={
+            {')', '('},
+            {'}', '{'},
+            {']', '['}
+        };
+        
+        for(auto i : s)
         {
-            if(i=='(' or i=='{' or i=='[')
-            {
+            if(i == '(' or i=='{' or i=='[')
                 store.push(i);
-            }
-            
+            else if(!store.empty() and store.top() == dic[i]) //!store.empty()去掉就不成立了，因为如果此时栈空，说明i此时不是三个左括号中的一个，也就一定匹配不了了
+                store.pop();
+            else return false;
         }
+        return store.empty();
     }
 };
+```
+## 5.数组中元素与下一个比它大的元素之间的距离
+https://leetcode.com/problems/daily-temperatures/description/
+```C++
+```
+## 6.循环数组中比当前元素大的下一个元素
+https://leetcode.com/problems/next-greater-element-ii/description/
+```C++
 ```
