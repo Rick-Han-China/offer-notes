@@ -193,7 +193,7 @@ public:
 ## 3. 归并两个有序的链表
 https://leetcode.com/problems/merge-two-sorted-lists/submissions/
 H
-1.注意哨兵节点
+1.注意哨兵节点--当你想创建一个新的链表并把旧链表链上去的时候，往往需要哨兵节点，当你对已有节点做修改时，往往不需要哨兵节点
 2.注意返回谁
 ```C++
 class Solution {
